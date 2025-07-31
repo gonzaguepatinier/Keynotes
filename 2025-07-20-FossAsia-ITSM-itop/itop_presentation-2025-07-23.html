@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iTop: The Power of Open Source in ITSM</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/white.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        .reveal {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .reveal .slides {
+            width: 100% !important;
+            height: 100vh !important;
+        }
+        
+        .reveal .slides section {
+            text-align: left;
+            width: 100% !important;
+            height: 100vh !important;
+            padding: 15px;
+            box-sizing: border-box;
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: flex-start !important;
+            overflow-y: auto !important;
+            font-size: 0.9em;
+        }
+        
+        .reveal h1, .reveal h2, .reveal h3 {
+            color: #2c5aa0;
+            text-transform: none;
+            margin: 0.5em 0 0.3em 0;
+            font-size: 1.8em;
+        }
+        
+        .reveal h2 {
+            font-size: 1.5em;
+        }
+        
+        .reveal h3 {
+            font-size: 1.2em;
+        }
+        
+        .reveal h4 {
+            font-size: 1em;
+            margin: 0.3em 0;
+        }
+        
+        .reveal p, .reveal li {
+            font-size: 0.9em;
+            line-height: 1.3;
+            margin: 0.3em 0;
+        }
+        
+        .reveal .title-slide {
+            text-align: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            width: 100vw !important;
+            height: 100vh !important;
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: center !important;
+            align-items: center !important;
+        }
+        
+        .reveal .title-slide h1,
+        .reveal .title-slide h2,
+        .reveal .title-slide h3 {
+            color: white;
+        }
+        
+        .speaker-info {
+            margin-top: 2rem;
+            font-size: 1.2rem;
+        }
+        
+        .reveal .highlight {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        
+        .reveal .green {
+            color: #27ae60;
+        }
+        
+        .reveal .blue {
+            color: #3498db;
+        }
+        
+        .tool-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.8rem;
+            margin: 0.5rem 0;
+            width: 100%;
+        }
+        
+        .tool-category {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+        }
+        
+        .advantages-list {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 1.2rem;
+            border-radius: 10px;
+            margin: 0.5rem 0;
+        }
+        
+        .advantages-list h3 {
+            color: white;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 0.5rem;
+            margin: 0.5rem 0;
+            width: 100%;
+        }
+        
+        .feature-card {
+            background: #ecf0f1;
+            padding: 0.8rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .demo-mockup {
+            background: #2c3e50;
+            color: white;
+            padding: 1.2rem;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            margin: 0.5rem 0;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.2rem;
+            border-radius: 10px;
+            text-align: center;
+            margin: 0.5rem 0;
+        }
+        
+        .cta-section h3 {
+            color: white;
+        }
+        
+        .frameworks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.5rem;
+            margin: 0.5rem 0;
+            width: 100%;
+        }
+        
+        .framework-card {
+            background: #f8f9fa;
+            padding: 0.8rem;
+            border-radius: 8px;
+            border-left: 4px solid #e74c3c;
+        }
+        
+        .icon {
+            font-size: 1.2rem;
+            margin-bottom: 0.3rem;
+            display: block;
+        }
+        
+        .business-model {
+            background: #2ecc71;
+            color: white;
+            padding: 1.2rem;
+            border-radius: 10px;
+            margin: 0.5rem 0;
+        }
+        
+        .business-model h3,
+        .business-model h4 {
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+            
+            <!-- Slide 1: Title Slide -->
+            <section class="title-slide">
+                <h1>iTop: The Power of Open Source in ITSM</h1>
+                <h2>A Deep Dive into Open Source IT Service Management</h2>
+                
+                <div class="speaker-info">
+                    <h3><i class="fas fa-user"></i> Gonzague PATINIER</h3>
+                    <p><i class="fas fa-brain"></i> Thought Leader in ITSM & Open Source</p>
+                    <p><i class="fas fa-building"></i> PPP Partners / System in Motion</p>
+                    <p><i class="fas fa-award"></i> 20+ years in IT Service Management, Project Management, DEVOPS, Gen AI and  Open Source Advocate</p>
+                </div>
+            </section>
+
+            <!-- Slide 2: What is ITSM? -->
+            <section>
+                <h2><i class="fas fa-question-circle blue"></i> What is ITSM?</h2>
+                
+                <h3>Definition: IT Service Management (ITSM)</h3>
+                
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <i class="fas fa-sync icon blue"></i>
+                        <h4>Aligning IT services with business needs</h4>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-chart-line icon green"></i>
+                        <h4>Improving service delivery & customer satisfaction</h4>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-tools icon highlight"></i>
+                        <h4>Managing incidents, changes, and assets efficiently</h4>
+                    </div>
+                </div>
+                
+                <div class="advantages-list">
+                    <h3>Why ITSM matters in modern IT operations</h3>
+                    <p><strong>Without ITSM:</strong> Companies face chaotic incident resolution and poor alignment with business goals</p>
+                </div>
+            </section>
+
+            <!-- Slide 3: ITSM Frameworks & Standards -->
+            <section>
+                <h2><i class="fas fa-sitemap blue"></i> ITSM Frameworks & Standards</h2>
+                
+                <div class="frameworks-grid">
+                    <div class="framework-card">
+                        <h4><i class="fas fa-book"></i> ITIL</h4>
+                        <p>Information Technology Infrastructure Library - Most widely adopted</p>
+                    </div>
+                    <div class="framework-card">
+                        <h4><i class="fas fa-feather"></i> FitSM</h4>
+                        <p>Lightweight ITSM framework - Great for smaller organizations</p>
+                    </div>
+                    <div class="framework-card">
+                        <h4><i class="fas fa-certificate"></i> ISO/IEC 20000</h4>
+                        <p>International ITSM Standard - For compliance-heavy industries</p>
+                    </div>
+                    <div class="framework-card">
+                        <h4><i class="fas fa-shield-alt"></i> COBIT</h4>
+                        <p>Governance & Risk Management framework</p>
+                    </div>
+                </div>
+                
+                <div class="highlight">
+                    <p><strong>Key Insight:</strong> Your tool should support the framework you follow</p>
+                </div>
+            </section>
+
+            <!-- Slide 4: ITSM Tools – Open Source vs. Paid -->
+            <section>
+                <h2><i class="fas fa-balance-scale blue"></i> ITSM Tools – Open Source vs. Paid</h2>
+                
+                <div class="tool-comparison">
+                    <div class="tool-category">
+                        <h3><i class="fab fa-osi green"></i> Open Source Options</h3>
+                        <ul>
+                            <li><strong>iTop</strong></li>
+                            <li>OTRS</li>
+                            <li>GLPI</li>
+                            <li>Request Tracker (RT)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tool-category">
+                        <h3><i class="fas fa-dollar-sign highlight"></i> Paid Solutions</h3>
+                        <ul>
+                            <li>ServiceNow</li>
+                            <li>BMC Helix</li>
+                            <li>Freshservice</li>
+                            <li>Jira Service Management</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="highlight">
+                    <p><strong>Question:</strong> ServiceNow dominates the enterprise market, but is it always the best fit?</p>
+                </div>
+            </section>
+
+            <!-- Slide 5: Why Choose Open Source? -->
+            <section>
+                <h2><i class="fab fa-osi blue"></i> Why Choose Open Source?</h2>
+                
+                <h3>Evolution of ITSM Tools:</h3>
+                <p>Manual/Paper → Homegrown Solutions → Open Source → SaaS</p>
+                
+                <div class="advantages-list">
+                    <h3>Advantages of Open Source:</h3>
+                    <ul>
+                        <li><strong>Reuse It</strong> – Leverage existing solutions</li>
+                        <li><strong>Own It</strong> – No vendor lock-in, full control</li>
+                        <li><strong>License Freedom</strong> – Avoid recurring costs</li>
+                        <li><strong>Community-Driven Innovation</strong></li>
+                    </ul>
+                </div>
+                
+                <p><strong>When Paid/SaaS Makes Sense:</strong> Companies wanting hands-off maintenance</p>
+                <p class="blue"><strong>Bottom Line:</strong> The best choice depends on your budget, team size, and IT maturity</p>
+            </section>
+
+            <!-- Slide 6: How to Select the Right ITSM Tool -->
+            <section>
+                <h2><i class="fas fa-search blue"></i> How to Select the Right ITSM Tool</h2>
+                
+                <h3>Key Considerations:</h3>
+                
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <i class="fas fa-rocket icon blue"></i>
+                        <h4>Business needs & scalability</h4>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-plug icon green"></i>
+                        <h4>Integration capabilities</h4>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-calculator icon highlight"></i>
+                        <h4>Total Cost of Ownership (TCO)</h4>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-users icon blue"></i>
+                        <h4>Community & support availability</h4>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-check-circle icon green"></i>
+                        <h4>Compliance with ITIL/FitSM</h4>
+                    </div>
+                </div>
+                
+                <div class="highlight">
+                    <p><strong>Remember:</strong> Don't just pick the 'best' tool—pick the one that fits your workflow</p>
+                </div>
+            </section>
+
+            <!-- Slide 7: The Business Model of Open Source ITSM -->
+            <section>
+                <h2><i class="fas fa-business-time blue"></i> The Business Model of Open Source ITSM</h2>
+                
+                <div class="business-model">
+                    <h3>How Open Source ITSM tools sustain themselves:</h3>
+                    <ul>
+                        <li><strong>Community Edition</strong> (Free)</li>
+                        <li><strong>Paid Extensions/Plugins</strong></li>
+                        <li><strong>Professional Support & Services</strong></li>
+                        <li><strong>Enterprise Licensing</strong></li>
+                    </ul>
+                </div>
+                
+                <h3><i class="fas fa-lightbulb highlight"></i> Case Study: Combodo's model with iTop</h3>
+                <p>Free doesn't mean unsupported—companies like Combodo offer paid support</p>
+                <p><strong>Example:</strong> iTop's enterprise plugins add advanced features like AI-driven ticket routing</p>
+                <p class="blue">This model keeps the core open while funding innovation</p>
+            </section>
+
+            <!-- Slide 8: Introducing iTop by Combodo -->
+            <section>
+                <h2><i class="fas fa-star blue"></i> Introducing iTop by Combodo</h2>
+                
+                <h3>What is iTop?</h3>
+                <p>Open Source, ITIL-aligned ITSM platform</p>
+                
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <i class="fas fa-exclamation-triangle icon highlight"></i>
+                        <h4>Incident Management</h4>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-bug icon blue"></i>
+                        <h4>Problem Management</h4>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-exchange-alt icon green"></i>
+                        <h4>Change Management</h4>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-database icon blue"></i>
+                        <h4>CMDB (Configuration Management Database)</h4>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-user-circle icon green"></i>
+                        <h4>Self-service portal</h4>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-chart-bar icon highlight"></i>
+                        <h4>Automation & reporting</h4>
+                    </div>
+                </div>
+                
+                <div class="advantages-list">
+                    <h3>Why iTop stands out:</h3>
+                    <p><strong>"iTop is like ServiceNow's little brother—powerful but without the cost"</strong></p>
+                    <p>Highly customizable—perfect for unique workflows</p>
+                </div>
+            </section>
+
+            <!-- Slide 9: Demo – iTop in Action -->
+            <section>
+                <h2><i class="fas fa-play blue"></i> Demo – iTop in Action</h2>
+                
+                <div class="demo-mockup">
+                    <h3><i class="fas fa-desktop"></i> Quick walkthrough of key functionalities:</h3>
+                    <ul>
+                        <li>✓ Ticket management</li>
+                        <li>✓ Asset & configuration tracking</li>
+                        <li>✓ Self-service portal</li>
+                        <li>✓ Reporting & dashboards</li>
+                    </ul>
+                </div>
+                
+                <h3><i class="fas fa-rocket green"></i> Real Ticket Lifecycle:</h3>
+                <p><strong>Submit → Assign → Resolve</strong></p>
+                
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <i class="fas fa-user-plus icon blue"></i>
+                        <h4>Self-Service Portal</h4>
+                        <p>Empowers users to solve common issues</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-cloud icon green"></i>
+                        <h4>Flexible Deployment</h4>
+                        <p>Install on-premise or in the cloud—your choice</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 10: Q&A & Closing Thoughts -->
+            <section>
+                <h2><i class="fas fa-comments blue"></i> Q&A & Closing Thoughts</h2>
+                
+                <div class="cta-section">
+                    <h3><i class="fas fa-key"></i> Key Takeaways:</h3>
+                    <ul>
+                        <li>Open Source ITSM is powerful & cost-effective</li>
+                        <li>iTop provides enterprise-grade features without the price tag</li>
+                        <li>The future of ITSM is flexible, community-driven solutions</li>
+                    </ul>
+                    
+                    <h3><i class="fas fa-bullhorn"></i> Call to Action:</h3>
+                    <p><strong>Try iTop:</strong> <a href="#" style="color: white;">iTop Website</a></p>
+                    <p><strong>Join the community</strong></p>
+                    <p><strong>Connect with me:</strong> [Your Contact Info]</p>
+                </div>
+                
+                <div class="highlight">
+                    <h3><i class="fas fa-gem"></i> Final Thought:</h3>
+                    <p><strong>"iTop is a hidden gem—don't overlook open source for ITSM"</strong></p>
+                    <p>The best way to learn is to try it!</p>
+                </div>
+                
+                <h3><i class="fas fa-question-circle blue"></i> Questions?</h3>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.js"></script>
+    <script>
+        Reveal.initialize({
+            hash: true,
+            transition: 'slide',
+            transitionSpeed: 'default',
+            backgroundTransition: 'fade',
+            controls: true,
+            progress: true,
+            center: false,
+            touch: true,
+            loop: false,
+            rtl: false,
+            shuffle: false,
+            fragments: true,
+            fragmentInURL: true,
+            embedded: false,
+            help: true,
+            showNotes: false,
+            autoPlayMedia: null,
+            preloadIframes: null,
+            autoSlide: 0,
+            autoSlideStoppable: true,
+            mouseWheel: false,
+            hideInactiveCursor: true,
+            hideCursorTime: 5000,
+            previewLinks: false,
+            viewDistance: 3,
+            mobileViewDistance: 2,
+            display: 'block',
+            hideAddressBar: true,
+            width: '100%',
+            height: '100%',
+            margin: 0.02,
+            minScale: 0.1,
+            maxScale: 3.0
+        });
+
+        // Add some interactive features
+        Reveal.addEventListener('slidechanged', function(event) {
+            // Add slide-specific animations or effects here
+            console.log('Slide changed to:', event.indexh);
+        });
+
+        // Keyboard shortcuts info
+        document.addEventListener('keydown', function(event) {
+            if (event.key === '?') {
+                alert('Keyboard shortcuts:\n' +
+                      '→ or Space: Next slide\n' +
+                      '← : Previous slide\n' +
+                      'ESC: Slide overview\n' +
+                      'S: Speaker notes\n' +
+                      'F: Fullscreen');
+            }
+        });
+    </script>
+</body>
+</html>
